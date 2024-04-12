@@ -2,7 +2,7 @@
     ViewBag.Title = "Sign up page";
 }
 
-<form asp-action="Index" method="post" class="box-form">
+<form asp-action="Signup" method="post" enctype="multipart/form-data" class="box-form">
     <div class="row">
         <div class="col box-content">
             @* ввод имени пользователя *@
@@ -47,7 +47,7 @@
             @* календарь *@
             <div class="input-group mb-3">
                 <span class="input-group-text" id="brithdate-addon">
-                    <i class="bi bi-calendar-fill"></i>
+                    <i class="bi bi-cake2-fill"></i>
                 </span>
                 <input type="date"
                        class="form-control"
