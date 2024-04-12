@@ -8,5 +8,10 @@ namespace registration_data_verification.Controllers
         {
             return View();
         }
+
+        public ViewResult Signup()
+        {
+            return View();
+        }
     }
 }

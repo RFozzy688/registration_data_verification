@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Sign up page";
+}
+
+<form asp-action="Index" method="post" class="box-form">
+    <div class="row">
+        <div class="col box-content">
+            @* ввод имени пользователя *@
+            <div class="input-group mb-3">
+                <span class="input-group-text"
+                      id="username-addon">
+                    <i class="bi bi-person-fill"></i>
+                </span>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Имя пользователя"
+                       aria-label="Username"
+                       aria-describedby="username-addon"
+                       name="signup-username">
+            </div>
+            @* ввод почты пользователя *@
+            <div class="input-group mb-3">
+                <span class="input-group-text"
+                      id="useremail-addon">
+                    <i class="bi bi-envelope-fill"></i>
+                </span>
+                <input type="email"
+                       class="form-control"
+                       placeholder="Электронная почта"
+                       aria-label="Useremail"
+                       aria-describedby="useremail-addon"
+                       name="signup-email">
+            </div>
+            @* ввод пароля *@
+            <div class="input-group mb-3">
+                <span class="input-group-text"
+                      id="useremail-addon">
+                    <i class="bi bi-person-fill-lock"></i>
+                </span>
+                <input type="password"
+                       class="form-control"
+                       placeholder="Пароль"
+                       aria-label="Useremail"
+                       aria-describedby="useremail-addon"
+                       name="signup-email">
+            </div>
+            @* календарь *@
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="brithdate-addon">
+                    <i class="bi bi-calendar-fill"></i>
+                </span>
+                <input type="date"
+                       class="form-control"
+                       placeholder="Email"
+                       aria-label="user-email"
+                       aria-describedby="brithdate-addon"
+                       name="signup-birthdate">
+            </div>
+            @* выбор аватара *@
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="avatar">
+                    <i class="bi bi-person-circle"></i>
+                </label>
+                <input type="file"
+                       class="form-control"
+                       id="avatar"
+                       name="signup-avatar">
+            </div>
+            @* checkbox *@
+            <div class="checkbox">
+                <input class="form-check-input"
+                       type="checkbox"
+                       value="true"
+                       id="flexCheckDefault"
+                       name="signup-confirm">
+                <label class="form-check-label"
+                       for="flexCheckDefault">
+                    Соглашаюсь с правилами сайта
+                </label>
+            </div>
+            @* отправить данные *@
+            <button type="submit" class="btn btn-outline-secondary btn-size">Регистрация</button>
+        </div>
+    </div>
+</form>

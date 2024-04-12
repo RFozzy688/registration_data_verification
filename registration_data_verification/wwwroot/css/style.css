@@ -1,2 +1,22 @@
-﻿body {
+﻿.box-form {
+    width: 500px;
+    margin: 0 auto;
+    padding: 30px 50px;
+    border: 1px solid lightgray;
+    border-radius: 5px
+}
+
+.box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-size {
+    width: 200px;
+}
+
+.checkbox {
+    align-self: flex-start;
+    margin-bottom: 20px;
 }
