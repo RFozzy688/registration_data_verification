@@ -1,5 +1,13 @@
-﻿@{
+﻿@model registration_data_verification.Models.Home.Signup.SignUpPageModel
+@{
     ViewBag.Title = "Sign up page";
+}
+
+@if (Model.IsSuccess != null)
+{
+    <div class="box-alert @(Model.IsSuccess ?? false ? "alert alert-success" : "alert alert-danger")" role="alert">
+        @Model.Message
+    </div>
 }
 
 <form asp-action="Signup" method="post" enctype="multipart/form-data" class="box-form">
@@ -16,8 +24,19 @@
                        placeholder="Имя пользователя"
                        aria-label="Username"
                        aria-describedby="username-addon"
-                       name="signup-username">
+                       name="signup-username"
+                       value="@(Model.IsSuccess ?? false ? "" : Model.SignUpFormModel!.UserName)">
+
             </div>
+            <p class="text-error">
+                @{
+                    if ((Model.IsSuccess ?? true) == false)
+                    {
+                        if (Model.ValidationErrors.ContainsKey(nameof(Model.SignUpFormModel.UserName)))
+                            @Model.ValidationErrors[nameof(Model.SignUpFormModel.UserName)];
+                    }
+                }
+            </p>
             @* ввод почты пользователя *@
             <div class="input-group mb-3">
                 <span class="input-group-text"
@@ -29,21 +48,41 @@
                        placeholder="Электронная почта"
                        aria-label="Useremail"
                        aria-describedby="useremail-addon"
-                       name="signup-email">
+                       name="signup-email"
+                       value="@(Model.IsSuccess ?? false ? "" : Model.SignUpFormModel!.UserEmail)">
+                
             </div>
+            <p class="text-error">
+                @{
+                    if ((Model.IsSuccess ?? true) == false)
+                    {
+                        if (Model.ValidationErrors.ContainsKey(nameof(Model.SignUpFormModel.UserEmail)))
+                            @Model.ValidationErrors[nameof(Model.SignUpFormModel.UserEmail)];
+                    }
+                }
+            </p>
             @* ввод пароля *@
             <div class="input-group mb-3">
                 <span class="input-group-text"
-                      id="useremail-addon">
+                      id="userpassword-addon">
                     <i class="bi bi-person-fill-lock"></i>
                 </span>
                 <input type="password"
                        class="form-control"
                        placeholder="Пароль"
-                       aria-label="Useremail"
-                       aria-describedby="useremail-addon"
-                       name="signup-email">
+                       aria-label="UserPassword"
+                       aria-describedby="userpassword-addon"
+                       name="signup-password">
             </div>
+            <p class="text-error">
+                @{
+                    if ((Model.IsSuccess ?? true) == false)
+                    {
+                        if (Model.ValidationErrors.ContainsKey(nameof(Model.SignUpFormModel.UserPassword)))
+                            @Model.ValidationErrors[nameof(Model.SignUpFormModel.UserPassword)];
+                    }
+                }
+            </p>
             @* календарь *@
             <div class="input-group mb-3">
                 <span class="input-group-text" id="brithdate-addon">
@@ -52,9 +91,10 @@
                 <input type="date"
                        class="form-control"
                        placeholder="Email"
-                       aria-label="user-email"
+                       aria-label="UserBrithdate"
                        aria-describedby="brithdate-addon"
-                       name="signup-birthdate">
+                       name="signup-birthdate"
+                       value="@(Model.IsSuccess ?? false ? "" : Model.SignUpFormModel!.Birthdate!.Value)">
             </div>
             @* выбор аватара *@
             <div class="input-group mb-3">
@@ -64,7 +104,8 @@
                 <input type="file"
                        class="form-control"
                        id="avatar"
-                       name="signup-avatar">
+                       name="signup-avatar"
+                       value="@(Model.IsSuccess ?? false ? "" : Model.SignUpFormModel!.AvatarFile)">
             </div>
             @* checkbox *@
             <div class="checkbox">
@@ -78,8 +119,19 @@
                     Соглашаюсь с правилами сайта
                 </label>
             </div>
+            <p class="text-error">
+                @{
+                    if ((Model.IsSuccess ?? true) == false)
+                    {
+                        if (Model.ValidationErrors.ContainsKey(nameof(Model.SignUpFormModel.Confirm)))
+                            @Model.ValidationErrors[nameof(Model.SignUpFormModel.Confirm)];
+                    }
+                }
+            </p>
             @* отправить данные *@
             <button type="submit" class="btn btn-outline-secondary btn-size">Регистрация</button>
+
         </div>
     </div>
 </form>
+

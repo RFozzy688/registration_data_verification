@@ -20,3 +20,13 @@
     align-self: flex-start;
     margin-bottom: 20px;
 }
+
+.box-alert {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.text-error {
+    align-self: flex-start;
+    color: red;
+}
